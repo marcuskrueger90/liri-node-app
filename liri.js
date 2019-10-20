@@ -2,7 +2,7 @@ require('dotenv').config();
 var fs = require('fs');
 var keys = require('./keys.js');
 axios = require('axios');
-// moment = require('moment');
+moment = require('moment');
 var Spotify = require('node-spotify-api');
 
 var spotify = new Spotify(
@@ -22,11 +22,42 @@ var runBit = function(){
 
     axios.get(URL)
     .then(function(response){
-        var data=(response.data)
-        console.log(data)
+        var data = response.data[0];
+        var data1 = response.data[1];
+        var data2 = response.data[2];
+        var date = moment(data.datetime).format('MM/DD/YYYY');
+        var date1 = moment(data1.datetime).format('MM/DD/YYYY');
+        var date2 = moment(data2.datetime).format('MM/DD/YYYY');
+        var concertResults = `
+        <--------Search Results-------->
+        
+        Venue: ${data.venue.name}
+        
+        Venue Location: ${data.venue.city}, ${data.venue.country}
+        
+        Date of Event: ${date}
+        
+        <--------------------------->
+        
+        Venue: ${data1.venue.name}
+        
+        Venue Location: ${data1.venue.city}, ${data1.venue.country}
+        
+        Date of Event: ${date1}
+        
+        <--------------------------->
+        
+        Venue: ${data2.venue.name}
+        
+        Venue Location: ${data2.venue.city}, ${data2.venue.country}
+        
+        Date of Event: ${date2}
+        
+        <--------End of Search-------->`;
         // name of venue
         // venue location
         // date of event(use moment to format mm/dd/yyyy)
+        console.log(concertResults);
     })
 }
 
@@ -88,15 +119,17 @@ var runOMDB = function(){
 
 switch(search){
     case 'concert':
+        console.log(`searching for "${nameSearch}" concerts...`)
         runBit();
         break;
 
     case 'song':
+        console.log(`searching for the song "${nameSearch}"....`)
         runSpotify();
         break;
 
     case 'movie':
-        console.log(`searching for movie ${nameSearch}...`)
+        console.log(`searching for movie "${nameSearch}"...`)
         runOMDB();
         break;
 
