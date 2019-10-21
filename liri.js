@@ -6,7 +6,8 @@ moment = require('moment');
 var Spotify = require('node-spotify-api');
 
 var spotify = new Spotify(
-    keys.spotify
+    keys.spotify, 
+
 );
 
 var arg = process.argv;
@@ -19,7 +20,7 @@ var nameSearch = process.argv.slice(3).join(" ");
 
 var runBit = function(){
     URL = `https://rest.bandsintown.com/artists/${nameSearch}/events?app_id=codingbootcamp`;
-
+    
     axios.get(URL)
     .then(function(response){
         var data = response.data[0];
@@ -54,15 +55,21 @@ var runBit = function(){
         Date of Event: ${date2}
         
         <--------End of Search-------->`;
-        // name of venue
-        // venue location
-        // date of event(use moment to format mm/dd/yyyy)
+       
         console.log(concertResults);
+        fs.appendFile('log.txt', `
+        Concert Search: ${nameSearch}
+        ${concertResults}
+        `, function(err) {
+            if (err) {
+              return console.log(err);
+            }})
     })
 }
 
 var runSpotify = function(){
-spotify.search({ type:'track', query: nameSearch})
+spotify.search({ type:'track', query: nameSearch}, callback)
+
 .then(function(response){
     console.log(response);
     // artist(s)
@@ -101,20 +108,18 @@ var runOMDB = function(){
         
         <--------End of Search-------->`;
         console.log(movieInfo);
+        fs.appendFile('log.txt', `
+        Movie Search: ${nameSearch}
+        ${movieInfo}
+        `, function(err) {
+            if (err) {
+              return console.log(err);
+            }})
     })
     .catch(function(err){
         console.log(err);
     })
 
-
-    // title
-    // year
-    // imdb rating
-    // rotten tomatoes rating
-    // country of production
-    // language of movie
-    // plot of movie
-    // actors in movie
 }
 
 switch(search){
@@ -124,6 +129,14 @@ switch(search){
         break;
 
     case 'song':
+            if(nameSearch===""){
+                nameSearch = fs.readFile('random.txt', 'utf8', function(err, data){
+                    if(err){
+                        return console.log(err);
+                    }
+                })
+               
+            }
         console.log(`searching for the song "${nameSearch}"....`)
         runSpotify();
         break;
