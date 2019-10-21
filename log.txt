@@ -77,3 +77,53 @@
         
         <--------End of Search-------->
         
+        Movie Search: The Sound of Music
+        
+        <--------Search Results-------->
+
+        Title: The Sound of Music 
+
+        Year: 1965
+
+        IMDB Rating: 8.0/10
+
+        Rotten Tomatoes Rating: 84%
+
+        Production: USA, 20th Century-Fox
+
+        Language: English, German
+
+        Plot(short): A woman leaves an Austrian convent to become a governess to the children of a Naval officer widower.
+
+        Actors: Julie Andrews, Christopher Plummer, Eleanor Parker, Richard Haydn
+        
+        <--------End of Search-------->
+        
+        Concert Search: The Regrettes
+        
+        <--------Search Results-------->
+        
+        Venue: The Loft
+        
+        Venue Location: Southampton, United Kingdom
+        
+        Date of Event: 11/04/2019
+        
+        <--------------------------->
+        
+        Venue: O2 Academy Islington
+        
+        Venue Location: London, United Kingdom
+        
+        Date of Event: 11/08/2019
+        
+        <--------------------------->
+        
+        Venue: O2 Academy3 Birmingham
+        
+        Venue Location: Birmingham, United Kingdom
+        
+        Date of Event: 11/09/2019
+        
+        <--------End of Search-------->
+        
