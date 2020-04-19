@@ -14,7 +14,7 @@ to search for movies type:
 
 after you hit enter it should display results that will appear as such
 
-see example at images/movieResults.jpg.
+![Movie Results](images/movieResults.jpg)
 
 #------------SEARCHING FOR CONCERTS--------------------#
 
@@ -22,8 +22,8 @@ to search for concerts type:
 
 "node liri.js concert <band name>"
 
-see example at images/concerts.jpg
+![Concert Search](images/concerts.jpg)
 
 after you hit enter if there are concerts for the artist coming up it will display up to 3 results
 
-see example at images/concertResults.jpg
+![Concert Results](images/concertResults.jpg)
