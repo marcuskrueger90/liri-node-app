@@ -10,7 +10,7 @@ to search for movies type:
 
 "node liri.js movie <movie title>"
 
-see example at images/movies.jpg
+![Movie Search](images/movies.jpg)
 
 after you hit enter it should display results that will appear as such
 
